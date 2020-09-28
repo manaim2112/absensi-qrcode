@@ -8,14 +8,15 @@
 
 </head>
 <body>
-  <div id="loadingMessage">🎥 Tidak terhubung ke kamera (di  mohon untuk enable akses kamera nya)</div>
-  <canvas id="canvas" hidden></canvas>
- 
-  <footer>
-    <button class="button" id="viewData"> <i class="icon icon-database"></i> Lihat </button>
-    <button class="button" id="downloadData"> <i class="icon icon-download-alt"></i> Download </button>
-    <button class="button" id="hapusData"> <i class="icon icon-trash"></i> Hapus </button>
-  </footer>
+  <div style="text-align: center;width: 100%;">
+    <div id="loadingMessage"></div>
+    <canvas id="canvas" hidden></canvas>
+    <footer style="margin-top:10px;">
+      <button class="button" id="viewData"> <i class="icon icon-database"></i> Lihat </button>
+      <button class="button" id="downloadData"> <i class="icon icon-download-alt"></i> Download </button>
+      <button class="button" id="hapusData"> <i class="icon icon-trash"></i> Hapus </button>
+    </footer>
+  </div>
   <script src="../src/js/jsQR.js"></script>
   <script src="../src/js/sweetalert2.all.min.js"></script>
   <script src="../src/js/xlsx.full.min.js"></script>
@@ -33,9 +34,10 @@
       requestAnimationFrame(tick);
     });
 
-    document.getElementById('viewData').addEventListener('click', view, false);
-    document.getElementById('downloadData').addEventListener('click', download, false);
-    document.getElementById('hapusData').addEventListener('click', remove, false);
+    event('#viewData', 'click', view);
+    event('#downloadData', 'click', download);
+    event('#hapusData', 'click', remove);
+
   </script>
 </body>
 </html>
