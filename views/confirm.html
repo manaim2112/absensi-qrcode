@@ -1,0 +1,41 @@
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Absensi by zilas.id</title>
+  
+  <link rel="stylesheet" href="../src/css/fontello.css">
+  <link rel="stylesheet" href="../src/css/main.css">
+
+</head>
+<body>
+  <div id="loadingMessage">🎥 Tidak terhubung ke kamera (di  mohon untuk enable akses kamera nya)</div>
+  <canvas id="canvas" hidden></canvas>
+ 
+  <footer>
+    <button class="button" id="viewData"> <i class="icon icon-database"></i> Lihat </button>
+    <button class="button" id="downloadData"> <i class="icon icon-download-alt"></i> Download </button>
+    <button class="button" id="hapusData"> <i class="icon icon-trash"></i> Hapus </button>
+  </footer>
+  <script src="../src/js/jsQR.js"></script>
+  <script src="../src/js/sweetalert2.all.min.js"></script>
+  <script src="../src/js/xlsx.full.min.js"></script>
+  <script src="../src/js/fileSaver.js"></script>
+  <script src="../src/js/main.js"></script>
+  <script>
+
+    let video = document.createElement("video");
+
+    // Use facingMode: environment to attemt to get the front camera on phones
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } }).then(function(stream) {
+      video.srcObject = stream;
+      video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+      video.play();
+      requestAnimationFrame(tick);
+    });
+
+    document.getElementById('viewData').addEventListener('click', view, false);
+    document.getElementById('downloadData').addEventListener('click', download, false);
+    document.getElementById('hapusData').addEventListener('click', remove, false);
+  </script>
+</body>
+</html>
